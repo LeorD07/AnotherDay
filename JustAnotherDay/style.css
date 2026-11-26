@@ -1,0 +1,158 @@
+html, body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* 1. Barra de noticias fija hasta arriba */
+.barra-noticias {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  background-color: #222;
+  color: #fff;
+  border-bottom: 3px solid #ff2a6d;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  font-family: monospace, sans-serif;
+  font-size: 14px;
+}
+
+.etiqueta-vivo {
+  background-color: #ff2a6d;
+  color: white;
+  font-weight: bold;
+  padding: 8px 14px;
+  flex-shrink: 0;
+  z-index: 2;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.cinta-contenedor {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 8px 0;
+}
+
+.cinta-texto {
+  display: inline-block;
+  animation: deslizar-noticias 10s linear infinite;
+}
+
+.barra-noticias:hover .cinta-texto {
+  animation-play-state: paused;
+}
+
+.cinta-texto a {
+  color: #faffb2;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 2.5px;
+}
+
+.cinta-texto a:hover {
+  color: #6ce7dd;
+  text-decoration: underline;
+}
+
+.cinta-texto span {
+  color: #ffb3c6;
+  margin: 0 2.5px;
+}
+
+@keyframes deslizar-noticias {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* 2. Fondo de cuadritos */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  --color1: rgba(77, 38, 70, 0.103);
+  --color2: rgb(202, 13, 145);
+  background-color: var(--color1);
+  background-image: linear-gradient(45deg, var(--color2) 25%, transparent 25%, transparent 75%, var(--color2) 75%, var(--color2)),
+                    linear-gradient(45deg, var(--color2) 25%, var(--color1) 25%, var(--color1) 75%, var(--color2) 75%, var(--color2));
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 65px 20px 20px 20px; /* Espacio arriba para que la barra no tape la ventana */
+  box-sizing: border-box;
+}
+
+/* 3. Caja blanca principal que flota sobre los cuadritos */
+.ventana-maestra {
+  width: 100%;
+  max-width: 950px;
+  background-color: #ffffff;
+  border: 3px solid #ff2a6d;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+/* 4. Columna izquierda: Aside de blinkies e imágenes */
+.barra-blinkies {
+  width: 165px;
+  flex-shrink: 0;
+  background-color: #ff2a6d;
+  padding: 6px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.barra-blinkies img {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: pixelated;
+}
+
+/* 5. Columna derecha: Contenido principal */
+.contenido-principal {
+  flex: 1;
+  min-width: 0;
+  padding: 20px;
+  background-color: #fff9fb;
+  box-sizing: border-box;
+}
+
+.caja-texto {
+  border: 2px solid #ff85a2;
+  border-radius: 12px;
+  padding: 15px;
+  background-color: #ffeef2;
+  overflow: hidden;
+}
+
+.boton-imagen {
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.boton-imagen:hover {
+  transform: scale(1.1);
+}
+
+.boton-imagen:active {
+  transform: scale(0.95);
+}
