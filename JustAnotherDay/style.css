@@ -1,10 +1,14 @@
+
+@font-face {
+  font-family: 'Undertalefont';
+  src: url('Fuente/determination.ttf') format('truetype');
+}
 html, body {
   width: 100%;
   min-height: 100%;
   margin: 0;
   font-family: sans-serif;
 }
-
 /* 1. Barra de noticias fija hasta arriba */
 .barra-noticias {
   position: fixed;
@@ -13,16 +17,16 @@ html, body {
   width: 100%;
   z-index: 9999;
   box-sizing: border-box;
-
+  
   display: flex;
   align-items: center;
   background-color: #222;
   color: #fff;
-  border-bottom: 3px solid #ff2a6d;
+  border-bottom: 0px solid #ff2a6d;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
   overflow: hidden;
-  font-family: monospace, sans-serif;
-  font-size: 14px;
+  font-family: 'Undertalefont', monospace;
+  font-size: 16px;
 }
 
 .etiqueta-vivo {
