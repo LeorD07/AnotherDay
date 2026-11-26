@@ -1,0 +1,284 @@
+
+@font-face {
+  font-family: 'Undertalefont';
+  src: url('Fuente/determination.ttf') format('truetype');
+}
+html, body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  font-family: sans-serif;
+}
+/* 1. Barra de noticias fija hasta arriba */
+.barra-noticias {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  box-sizing: border-box;
+  
+  display: flex;
+  align-items: center;
+  background-color: #222;
+  color: #fff;
+  border-bottom: 0px solid #ff2a6d;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  font-family: 'Undertalefont', monospace;
+  font-size: 24px;
+}
+
+.etiqueta-vivo {
+  background-color: #ff2a6d;
+  color: white;
+  font-weight: bold;
+  padding: 8px 14px;
+  flex-shrink: 0;
+  z-index: 2;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.cinta-contenedor {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 8px 0;
+}
+
+.cinta-texto {
+  display: inline-block;
+  animation: deslizar-noticias 10s linear infinite;
+}
+
+.barra-noticias:hover .cinta-texto {
+  animation-play-state: paused;
+}
+
+.cinta-texto a {
+  color: #faffb2;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 2.5px;
+}
+
+.cinta-texto a:hover {
+  color: #6ce7dd;
+  text-decoration: underline;
+}
+
+.cinta-texto span {
+  color: #ffb3c6;
+  margin: 0 2.5px;
+}
+
+@keyframes deslizar-noticias {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* 2. Fondo de cuadritos */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  --color1: rgba(0, 0, 0, 0);
+  --color2: rgb(0, 0, 0);
+  background-color: var(--color1);
+  background-image: linear-gradient(45deg, var(--color2) 25%, transparent 25%, transparent 75%, var(--color2) 75%, var(--color2)),
+                    linear-gradient(45deg, var(--color2) 25%, var(--color1) 25%, var(--color1) 75%, var(--color2) 75%, var(--color2));
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Evita que al crecer hacia abajo se corte por arriba */
+  align-items: center;
+  gap: 25px;                   /* Separación entre la ventana y las imágenes de abajo */
+  padding: 135px 20px 60px 20px; /* 135px arriba deja espacio para la barra y el gato/welcome */
+  box-sizing: border-box;
+}
+
+/* 3. Caja blanca principal que flota sobre los cuadritos */
+.ventana-maestra {
+  width: 100%;
+  max-width: 1650px;
+  background-color: #ffffff;
+  border: 3px solid #ff2a6d;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  box-sizing: border-box;
+  
+}
+/* 3. Caja blanca principal */
+.ventana-maestra {
+  position: relative; /* Necesario para posicionar las tiras encima */
+  width: 100%;
+  max-width: 950px;
+  background-color: #ffffff;
+  border: 3px solid #ff2a6d;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+/* Tira lateral izquierda ENCIMA de la ventana */
+.ventana-maestra::before {
+  content: "";
+  position: absolute;
+  top: -3px;        /* Cubre también el borde superior rosa */
+  bottom: -3px;     /* Cubre también el borde inferior rosa */
+  left: -12px;      /* Ajusta este número para moverlo más adentro o más afuera */
+  width: 35px;      /* Ancho de tu espiral/margen PNG */
+  
+  background-image: url('Imagenes/MargenV.png');
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-color: transparent; /* Fuerza transparencia sin fondo blanco */
+  
+  z-index: 50;          /* Lo coloca ENCIMA de los blinkies y del contenido */
+  pointer-events: none; /* Permite hacer clic a través de los huecos transparentes */
+}
+
+/* Tira lateral derecha ENCIMA de la ventana */
+.ventana-maestra::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  right: -12px;     /* Ajusta igual que 'left' arriba */
+  width: 35px;      /* Ancho de tu espiral/margen PNG */
+  
+  background-image: url('Imagenes/MargenV.png');
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-color: transparent;
+  transform: scaleX(-1); /* Refleja el espiral hacia el otro lado (bórralo si no lo quieres) */
+  
+  z-index: 50;          /* Lo coloca ENCIMA de la ventana */
+  pointer-events: none;
+}
+/* 4. Columna izquierda: Aside de blinkies e imágenes */
+.barra-blinkies {
+  width: 265px;
+  flex-shrink: 0;
+  background-color: #ff2a6d;
+  padding: 6px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.barra-blinkies img {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: pixelated;
+}
+
+/* 5. Columna derecha: Contenido principal */
+.contenido-principal {
+  flex: 1;
+  min-width: 0;
+  padding: 20px;
+  background-color: #fff9fb;
+  box-sizing: border-box;
+}
+.imagenes-abajo {
+  width: 100%;
+  max-width: 950px;          /* Mismo ancho máximo que .ventana-maestra */
+  display: flex;
+  flex-wrap: wrap;           /* Si pones muchas, bajan a otra fila sin desbordarse */
+  justify-content: left;  
+  align-items: center;
+  gap: 6px;                 /* Espacio entre cada imagen */
+  z-index: 10;               /* Asegura que queden por encima del fondo */
+}
+.imagenes-abajo img {
+  height: 40px;              /* Ajusta el tamaño que quieras para estas imágenes */
+  width: auto;
+  display: block;
+}
+.caja-texto {
+  border: 2px solid #ff85a2;
+  border-radius: 12px;
+  padding: 15px;
+  background-color: #ffeef2;
+  overflow: hidden;
+}
+
+.boton-imagen {
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.boton-imagen:hover {
+  transform: scale(1.1);
+}
+
+.boton-imagen:active {
+  transform: scale(0.95);
+}
+/* GIF Welcome*/
+.gif-flotante {
+  position: absolute;
+  top: -115px;           /* Número negativo para que suba hacia los cuadritos */
+  right: 420px;         /* Distancia desde el borde derecho (ajústalo a tu gusto) */
+  width: 300px;         /* Tamaño del GIF */
+  height: auto;
+  
+  z-index: 60;          /* Mayor que los espirales (50) y menor que la barra de noticias (9999) */
+  pointer-events: none; /* Evita que bloquee clics si queda cerca de algún botón */
+}
+/* Pin Gato*/
+.gato-flotante {
+  position: absolute;
+  top: -95px;           /* Número negativo para que suba hacia los cuadritos */
+  right: 690px;         /* Distancia desde el borde derecho (ajústalo a tu gusto) */
+  width: 300px;         /* Tamaño del GIF */
+  height: auto;
+  
+  z-index: 60;          /* Mayor que los espirales (50) y menor que la barra de noticias (9999) */
+  pointer-events: none; /* Evita que bloquee clics si queda cerca de algún botón */
+}
+/* Pin Fernan*/
+.fernan-flotante {
+  position: absolute;
+  top: 1000px;           /* Número negativo para que suba hacia los cuadritos */
+  right: -150px;         /* Distancia desde el borde derecho (ajústalo a tu gusto) */
+  width: 300px;         /* Tamaño del GIF */
+  height: auto;
+  
+  z-index: 60;          /* Mayor que los espirales (50) y menor que la barra de noticias (9999) */
+  pointer-events: none; /* Evita que bloquee clics si queda cerca de algún botón */
+}
+/* Pin Lateral1*/
+.lateral1-flotante {
+ position: absolute;
+  top: 600px;           
+  right: 950px;        
+  width: 250px;        
+  height: auto;
+  
+  z-index: 60;          
+  pointer-events: none; 
+}
+/* Pin Lateral2*/
+.lateral2-flotante {
+  position: absolute;
+  top: 300px;           
+  right: -200px;        
+  width: 150px;         
+  height: auto;
+  
+  z-index: 60;          
+  pointer-events: none; 
+}
