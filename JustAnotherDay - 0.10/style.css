@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: 'Undertalefont';
   src: url('Fuente/determination.ttf') format('truetype');
@@ -59,7 +58,7 @@ html, body {
   color: #faffb2;
   text-decoration: none;
   font-weight: bold;
-  margin: 0 2.5px;
+  margin: 0 5px;
 }
 
 .cinta-texto a:hover {
@@ -69,7 +68,7 @@ html, body {
 
 .cinta-texto span {
   color: #ffb3c6;
-  margin: 0 2.5px;
+  margin: 0 5px;
 }
 
 @keyframes deslizar-noticias {
@@ -93,7 +92,7 @@ html, body {
   flex-direction: column;
   justify-content: flex-start; /* Evita que al crecer hacia abajo se corte por arriba */
   align-items: center;
-  gap: 25px;                   /* Separación entre la ventana y las imágenes de abajo */
+  gap: 25px;                   /* SeparaciÃ³n entre la ventana y las imÃ¡genes de abajo */
   padding: 135px 20px 60px 20px; /* 135px arriba deja espacio para la barra y el gato/welcome */
   box-sizing: border-box;
 }
@@ -131,9 +130,9 @@ html, body {
 .ventana-maestra::before {
   content: "";
   position: absolute;
-  top: -3px;        /* Cubre también el borde superior rosa */
-  bottom: -3px;     /* Cubre también el borde inferior rosa */
-  left: -12px;      /* Ajusta este número para moverlo más adentro o más afuera */
+  top: -3px;        /* Cubre tambiÃ©n el borde superior rosa */
+  bottom: -3px;     /* Cubre tambiÃ©n el borde inferior rosa */
+  left: -12px;      /* Ajusta este nÃºmero para moverlo mÃ¡s adentro o mÃ¡s afuera */
   width: 35px;      /* Ancho de tu espiral/margen PNG */
   
   background-image: url('Imagenes/MargenV.png');
@@ -142,7 +141,7 @@ html, body {
   background-color: transparent; /* Fuerza transparencia sin fondo blanco */
   
   z-index: 50;          /* Lo coloca ENCIMA de los blinkies y del contenido */
-  pointer-events: none; /* Permite hacer clic a través de los huecos transparentes */
+  pointer-events: none; /* Permite hacer clic a travÃ©s de los huecos transparentes */
 }
 
 /* Tira lateral derecha ENCIMA de la ventana */
@@ -158,12 +157,12 @@ html, body {
   background-repeat: repeat-y;
   background-size: 100% auto;
   background-color: transparent;
-  transform: scaleX(-1); /* Refleja el espiral hacia el otro lado (bórralo si no lo quieres) */
+  transform: scaleX(-1); /* Refleja el espiral hacia el otro lado (bÃ³rralo si no lo quieres) */
   
   z-index: 50;          /* Lo coloca ENCIMA de la ventana */
   pointer-events: none;
 }
-/* 4. Columna izquierda: Aside de blinkies e imágenes */
+/* 4. Columna izquierda: Aside de blinkies e imÃ¡genes */
 .barra-blinkies {
   width: 265px;
   flex-shrink: 0;
@@ -193,7 +192,7 @@ html, body {
 }
 .imagenes-abajo {
   width: 100%;
-  max-width: 950px;          /* Mismo ancho máximo que .ventana-maestra */
+  max-width: 950px;          /* Mismo ancho mÃ¡ximo que .ventana-maestra */
   display: flex;
   flex-wrap: wrap;           /* Si pones muchas, bajan a otra fila sin desbordarse */
   justify-content: left;  
@@ -202,7 +201,7 @@ html, body {
   z-index: 10;               /* Asegura que queden por encima del fondo */
 }
 .imagenes-abajo img {
-  height: 40px;              /* Ajusta el tamaño que quieras para estas imágenes */
+  height: 40px;              /* Ajusta el tamaÃ±o que quieras para estas imÃ¡genes */
   width: auto;
   display: block;
 }
@@ -230,35 +229,35 @@ html, body {
 /* GIF Welcome*/
 .gif-flotante {
   position: absolute;
-  top: -115px;           /* Número negativo para que suba hacia los cuadritos */
-  right: 420px;         /* Distancia desde el borde derecho (ajústalo a tu gusto) */
-  width: 300px;         /* Tamaño del GIF */
+  top: -115px;           /* NÃºmero negativo para que suba hacia los cuadritos */
+  right: 420px;         /* Distancia desde el borde derecho (ajÃºstalo a tu gusto) */
+  width: 300px;         /* TamaÃ±o del GIF */
   height: auto;
   
   z-index: 60;          /* Mayor que los espirales (50) y menor que la barra de noticias (9999) */
-  pointer-events: none; /* Evita que bloquee clics si queda cerca de algún botón */
+  pointer-events: none; /* Evita que bloquee clics si queda cerca de algÃºn botÃ³n */
 }
 /* Pin Gato*/
 .gato-flotante {
   position: absolute;
-  top: -95px;           /* Número negativo para que suba hacia los cuadritos */
-  right: 690px;         /* Distancia desde el borde derecho (ajústalo a tu gusto) */
-  width: 300px;         /* Tamaño del GIF */
+  top: -95px;           /* NÃºmero negativo para que suba hacia los cuadritos */
+  right: 690px;         /* Distancia desde el borde derecho (ajÃºstalo a tu gusto) */
+  width: 300px;         /* TamaÃ±o del GIF */
   height: auto;
   
   z-index: 60;          /* Mayor que los espirales (50) y menor que la barra de noticias (9999) */
-  pointer-events: none; /* Evita que bloquee clics si queda cerca de algún botón */
+  pointer-events: none; /* Evita que bloquee clics si queda cerca de algÃºn botÃ³n */
 }
 /* Pin Fernan*/
 .fernan-flotante {
   position: absolute;
-  top: 1000px;           /* Número negativo para que suba hacia los cuadritos */
-  right: -150px;         /* Distancia desde el borde derecho (ajústalo a tu gusto) */
-  width: 300px;         /* Tamaño del GIF */
+  top: 1000px;           /* NÃºmero negativo para que suba hacia los cuadritos */
+  right: -150px;         /* Distancia desde el borde derecho (ajÃºstalo a tu gusto) */
+  width: 300px;         /* TamaÃ±o del GIF */
   height: auto;
   
   z-index: 60;          /* Mayor que los espirales (50) y menor que la barra de noticias (9999) */
-  pointer-events: none; /* Evita que bloquee clics si queda cerca de algún botón */
+  pointer-events: none; /* Evita que bloquee clics si queda cerca de algÃºn botÃ³n */
 }
 /* Pin Lateral1*/
 .lateral1-flotante {
